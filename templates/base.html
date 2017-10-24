@@ -1,24 +1,9 @@
 <html>
   <head>
-    <title>{% block title %}
-      Home
-    {% endblock %} | Storyvesant</title>
+    <title>{{ title }}</title>
   </head>
   <body>
-    <b>Storyvesant</b> | 
-    <a href="/">Home</a> | 
-    {% if logged_in %}
-      <a href="/stories">All Stories</a> | 
-      <a href="/create">Create Story</a> | 
-      <a href="/profile">Profile</a> | 
-      <a href="/logout">Logout</a>
-    {% else %}
-      <a href="/login">Login</a> | 
-      <a href="/register">Register</a>
-    {% endif %}
-    <br />
-    {% block content %}
-      
-    {% endblock %}
+    
+    <a href="/">Home</a>
   </body>
 </html>

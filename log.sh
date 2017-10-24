@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATE=`date '+%Y-%m-%d %H:%M'`
-ENTRY="$1 -- $DATE\n$2\n"
+ENTRY="$1 -- $DATE\n$2"
 
 if [ $# -eq 2 ]; then
     if [ ! -e devlog.txt ]; then
