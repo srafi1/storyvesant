@@ -24,7 +24,8 @@ def auth(usar,passwad):
 	cmd = ""
 	if "user" in request.args and "passo" in request.args:
 		username = request.args["user"]
-		password = request.args["passo"]
+		password = hash(request.args["passo"])
+
 
 def register(usar, passwad):
 

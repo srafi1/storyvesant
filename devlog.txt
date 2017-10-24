@@ -7,3 +7,5 @@ rafiS -- 2017-10-24 08:39
 started on templates
 rafiS -- 2017-10-24 09:51
 started login and register templates
+leungB -- 2017-10-24 13:19
+started to make auth function
