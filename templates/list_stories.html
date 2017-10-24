@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>List of Stories</h1>
+{% for story in stories %}
+<h3>{{ story.title }}</h3>
+<p>
+{{ story.last_sentence }} <br/>
+<a href="/contribute/{{ story.id }}">Add to this story</a>
+</p>
+{% endfor %}
+{% endblock %}
