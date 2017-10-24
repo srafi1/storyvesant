@@ -18,7 +18,6 @@ def auth(user,passo,upass):
 			stat_code+=1
 	return stat_code
 
-
 def auth(usar,passwad):
 	db_name = "upass.db"
 	cmd = ""
@@ -26,15 +25,18 @@ def auth(usar,passwad):
 		username = request.args["user"]
 		password = hash(request.args["passo"])
 
-
-def register(usar, passwad):
-
 @app.route("/")
 def landing():
-	return render_template("index.html", title = "welcome")
+    return render_template("index.html", title = "Welcome")
+
 @app.route("/login")
-def login():
-	print("hello")
+def login_route():
+    return render_template("login.html", title = "Login")
+
+@app.route("/register")
+def register_route():
+    return render_template("register.html", title = "Register")
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
