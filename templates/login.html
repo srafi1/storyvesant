@@ -6,8 +6,24 @@
 <span style="color: red;">{{ msg }}</span> <br/>
 {% endfor %}
 <form action="/login" method="post">
-  Username: <input type="text" name="uname" placeholder="Username" /> <br/>
-  Password: <input type="password" name="pword" placeholder="Password" /> <br/>
-  <input type="submit" value="Login" />
+  <table>
+    <tr>
+      <td>
+        Username:
+      </td>
+      <td>
+        <input type="text" name="uname" placeholder="Username" autofocus="true"/> <br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password:
+      </td> 
+      <td>
+        <input type="password" name="pword" placeholder="Password"/> <br/>
+      </td>
+    </tr>
+  </table>
+    <input type="submit" value="Login" />
 </form>
 {% endblock %}
