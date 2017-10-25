@@ -1,6 +1,6 @@
 #!usr/bin/python
 
-import os, sqlite3
+import os, sys, sqlite3
 
 def upass_get(usar):
 	cmd = "SELECT password FROM users WHERE username = '%s'" % (usar)
@@ -30,7 +30,24 @@ def auth(usar,passwad):
 		return 0
 
 def register(user, password):
-	pUser = user
 	pPass = password
+	db_name = "upass.db"
+	dab = sqlite3.connect(db_name)
+	c = dab.cursor()
+	cmd = "SELECT * FROM users WHERE username = '%s'" % (user)
+	check = c.execute(cmd)
+	nPass = ''
+	for row in check:
+		nPass = str(row[0])
+	if nPass != "":
+		print "User "+user+" already exists"
+		return 0
+	print "User will be added."
+	cmd = "INSERT INTO users VALUES ('%s', '%s')" % (user, str(hash(pPass)))
+	c.execute(cmd)
+	print user+" added."
+	dab.commit()
+	dab.close()
+	return 1
 
 
