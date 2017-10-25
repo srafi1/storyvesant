@@ -11,27 +11,37 @@ def init_parse_tables():
 	c = dab.cursor()
 	cmd = ""
 
-def auth(usar,passwad):
+def upass_get(usar):
+	cmd = "SELECT password FROM users WHERE username = '%s'" % (usar)
 	db_name = "upass.db"
-	cmd = ""
+	dab = sqlite3.connect(db_name)
+	c = dab.cursor()
+	Pass =	c.execute(cmd)
+	nPass = ""
+	for row in Pass:
+		nPass = str(row[0])
+	return nPass
+
+def auth(usar,passwad):
 	pUser = usar
 	pPass = hash(passwad)
 	'''
-	stat_code -1 = bad username
-	stat_code 0 = bad password
+	stat_code -1 = nothing in user input
+	stat_code 0 = bad user or password
 	stat_code 1 = good
 	'''
-	stat_code = -1
-	stat_code = -1
-	if user in upass:
-		stat_code+=1
-		if passo == upass[user]:
-			stat_code+=1
-	return stat_code
+	upassget = upass_get(usar)
+	if (upass_get(usar) == ""):
+		return -1
+	elif (pPass == int(upassget)):
+		return 1
+	else:
+		return 0
 
 @app.route("/")
 def landing():
-    return render_template("index.html", title = "Welcome")
+	print auth("a","a");
+	return render_template("index.html", title = "Welcome")
 
 @app.route("/login")
 def login_route():
