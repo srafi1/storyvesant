@@ -8,7 +8,7 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def landing():
-	print "login status code test: " loggit.auth("a","a");
+	print "login status code test: "+str(loggit.auth("admin","password"));
 	return render_template("index.html", title = "Welcome")
 
 @app.route("/login")
