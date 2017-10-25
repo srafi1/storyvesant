@@ -9,3 +9,5 @@ rafiS -- 2017-10-24 09:51
 started login and register templates
 leungB -- 2017-10-24 13:19
 started to make auth function
+leungB -- 2017-10-25 09:01
+I got the auth function working. I had a problem involving strings and ints but its working now
