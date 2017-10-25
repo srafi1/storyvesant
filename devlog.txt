@@ -15,3 +15,7 @@ leungB -- 2017-10-25 09:10
 migrated some functions into util
 leungB -- 2017-10-25 13:16
 Register and auth functions are working now
+rafiS -- 2017-10-25 13:38
+started on story templates
+rafiS -- 2017-10-25 14:07
+worked on Flask register route
