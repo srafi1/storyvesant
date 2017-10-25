@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ story.title }}</h1>
+<p>{{ story.body }}</p>
+<a href="/edit/{{ story.id }}">Contribute to this story</a>
+{% endblock %}
+
