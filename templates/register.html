@@ -6,9 +6,32 @@
 <span style="color: red;">{{ msg }}</span> <br/>
 {% endfor %}
 <form action="/register" method="post">
-  Username: <input type="text" name="uname" placeholder="Username" /> <br/>
-  Password: <input type="password" name="pword" placeholder="Password" /> <br/>
-  Confirm Password: <input type="password" name="pword2" placeholder="Confirm Password" /> <br/>
+  <table>
+    <tr>
+      <td>
+        Username:
+      </td>
+      <td>
+        <input type="text" name="uname" placeholder="Username" autofocus="true"/> <br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password:
+      </td> 
+      <td>
+        <input type="password" name="pword" placeholder="Password" /> <br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Confirm Password:
+      </td> 
+      <td>
+        <input type="password" name="pword2" placeholder="Confirm Password" /> <br/>
+      </td>
+    </tr>
+  </table>
   <input type="submit" value="Register" />
 </form>
 {% endblock %}
