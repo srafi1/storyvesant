@@ -5,25 +5,29 @@ import os, sqlite3
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
-def auth(user,passo,upass):
+def init_parse_tables():
+	db_name = "upass.db"
+	dab = sqlite3.connect(db_name)
+	c = dab.cursor()
+	cmd = ""
+
+def auth(usar,passwad):
+	db_name = "upass.db"
+	cmd = ""
+	pUser = usar
+	pPass = hash(passwad)
 	'''
 	stat_code -1 = bad username
 	stat_code 0 = bad password
 	stat_code 1 = good
 	'''
 	stat_code = -1
+	stat_code = -1
 	if user in upass:
 		stat_code+=1
 		if passo == upass[user]:
 			stat_code+=1
 	return stat_code
-
-def auth(usar,passwad):
-	db_name = "upass.db"
-	cmd = ""
-	if "user" in request.args and "passo" in request.args:
-		username = request.args["user"]
-		password = hash(request.args["passo"])
 
 @app.route("/")
 def landing():
