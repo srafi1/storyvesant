@@ -11,3 +11,5 @@ leungB -- 2017-10-24 13:19
 started to make auth function
 leungB -- 2017-10-25 09:01
 I got the auth function working. I had a problem involving strings and ints but its working now
+leungB -- 2017-10-25 09:10
+migrated some functions into util
