@@ -5,12 +5,6 @@ import os, sqlite3
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
-def init_parse_tables():
-	db_name = "upass.db"
-	dab = sqlite3.connect(db_name)
-	c = dab.cursor()
-	cmd = ""
-
 def upass_get(usar):
 	cmd = "SELECT password FROM users WHERE username = '%s'" % (usar)
 	db_name = "upass.db"
@@ -37,6 +31,11 @@ def auth(usar,passwad):
 		return 1
 	else:
 		return 0
+
+def register(user, password):
+	pUser = user
+	pPass = password
+
 
 @app.route("/")
 def landing():
