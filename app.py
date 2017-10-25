@@ -19,6 +19,12 @@ def login_route():
 def register_route():
     return render_template("register.html", title = "Register")
 
+@app.route("/read")
+def read():
+
+@app.route("/edit")
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
