@@ -15,6 +15,9 @@ started login and register templates
 leungB -- 2017-10-24 13:19
 started to make auth function
 
+jahanI -- 2017-10-25 08:31
+Updated readme
+
 leungB -- 2017-10-25 09:01
 I got the auth function working. I had a problem involving strings and ints but its working now
 
@@ -26,6 +29,9 @@ Register and auth functions are working now
 
 rafiS -- 2017-10-25 13:38
 started on story templates
+
+jahanI -- 2017-10-25 13:40
+Added functions for database creation/basic testing
 
 rafiS -- 2017-10-25 14:07
 worked on Flask register route
