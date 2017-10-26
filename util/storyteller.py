@@ -19,3 +19,11 @@ def create_story(title, username):
     dab.commit()
     dab.close()
     return 1
+
+#return list of dictionaries with .title and .last-sentences.
+def get_story_list():
+    cmd = "SELECT * FROM Stories ORDER BY id ASC"
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    c.execute(cmd)
