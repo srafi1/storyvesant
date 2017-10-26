@@ -42,3 +42,6 @@ fixed registering with a taken username
 rafiS -- 2017-10-25 21:49
 added a bunch of routes, login verification, and worked on story-related templates
 
+leungB -- 2017-10-26 12:30
+Moved the databases into /data, started the story making functions
+
