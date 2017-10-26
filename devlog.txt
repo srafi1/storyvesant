@@ -45,3 +45,6 @@ added a bunch of routes, login verification, and worked on story-related templat
 leungB -- 2017-10-26 12:30
 Moved the databases into /data, started the story making functions
 
+jahanI -- 2017-10-26 12:59
+Added makeUser method for database
+

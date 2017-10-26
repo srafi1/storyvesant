@@ -30,3 +30,6 @@ $ git clone https://github.com/srafi1/storyvesant.git
 $ cd storyvesant
 $ python app.py
 ```
+Then, in the browser location bar, enter:
+``` http://localhost:5000/ ```
+to reach the landing page
