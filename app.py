@@ -1,8 +1,10 @@
 #!usr/bin/python
+
 from flask import Flask, session, render_template, request, redirect, url_for, flash
+from functools import wraps
 import os, sqlite3
 import util.loggit as loggit
-from functools import wraps
+import util.storyteller as bard
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
