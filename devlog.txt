@@ -48,3 +48,6 @@ Moved the databases into /data, started the story making functions
 jahanI -- 2017-10-26 12:59
 Added makeUser method for database
 
+leungB -- 2017-10-26 13:19
+continued making the storyteller functions
+
