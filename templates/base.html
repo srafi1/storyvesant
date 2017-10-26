@@ -1,13 +1,11 @@
 <html>
   <head>
-    <title>{% block title %}
-      Home
-    {% endblock %} | Storyvesant</title>
+    <title>{{ title }} | Storyvesant</title>
   </head>
   <body>
     <b>Storyvesant</b> | 
     <a href="/">Home</a> | 
-    {% if logged_in %}
+    {% if 'user' in session %}
       <a href="/stories">All Stories</a> | 
       <a href="/create">Create Story</a> | 
       <a href="/profile">Profile</a> | 

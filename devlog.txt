@@ -1,21 +1,38 @@
-firstL -- TIMESTAMP
-<updates>
+Team Storyvesant
+Holden Higgins, Ibnul Jahan, Brian Leung, Shakil Rafi 
+SoftDev1 pd7
+P#00 - Da Art of Storytellin'
 
 holdenH -- 2017-10-23 12:25
 created devlog
+
 rafiS -- 2017-10-24 08:39
 started on templates
+
 rafiS -- 2017-10-24 09:51
 started login and register templates
+
 leungB -- 2017-10-24 13:19
 started to make auth function
+
 leungB -- 2017-10-25 09:01
 I got the auth function working. I had a problem involving strings and ints but its working now
+
 leungB -- 2017-10-25 09:10
 migrated some functions into util
+
 leungB -- 2017-10-25 13:16
 Register and auth functions are working now
+
 rafiS -- 2017-10-25 13:38
 started on story templates
+
 rafiS -- 2017-10-25 14:07
 worked on Flask register route
+
+rafiS -- 2017-10-25 21:09
+fixed registering with a taken username
+
+rafiS -- 2017-10-25 21:49
+added a bunch of routes, login verification, and worked on story-related templates
+
