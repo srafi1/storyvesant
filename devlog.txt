@@ -54,3 +54,5 @@ continued making the storyteller functions
 leungB -- 2017-10-26 22:59
 Finished the change_pass function
 
+higginsH -- 2017-10-27 10:44
+changed database to accept new stories for table and to store lists as CSV strings

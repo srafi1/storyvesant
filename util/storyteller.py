@@ -29,4 +29,12 @@ def get_story_list():
     stories = c.execute(cmd)
     storydict = {}
     for story in stories:
-        storydict["title"] = story[0]
+        storydict["title"] = str(story[0])
+        storydict["last_sentence"] = 
+    print storydict
+def get_last_sentence():
+    cmd = "SELECT * FROM Stories ORDER BY id ASC"
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    stories = c.execute(cmd)
