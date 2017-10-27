@@ -25,7 +25,7 @@ def landing():
     #bard.create_story("test","testing")
 	#loggit.change_pass("a",'a', 'a')
 	bard.get_story_list()
-	return render_template("index.html", title = "Welcome")
+	return render_template("index.html")
 
 @app.route("/login", methods = ["GET", "POST"])
 def login_route():
@@ -40,7 +40,7 @@ def login_route():
             flash("Enter both username and password")
         else:
             flash("Bad username or password")
-    return render_template("login.html", title = "Login")
+    return render_template("login.html")
 
 @app.route("/logout")
 def logout_route():
@@ -70,7 +70,7 @@ def register_route():
         if valid:
             loggit.register(uname, pword)
             return redirect("/login")
-    return render_template("register.html", title = "Register")
+    return render_template("register.html")
 
 @app.route("/create", methods = ["GET", "POST"])
 @login_required
@@ -88,7 +88,7 @@ def create_story():
         if valid:
             # add story to db
             return redirect("/")
-    return render_template("create_story.html", title = "Create Story")
+    return render_template("create_story.html")
 
 @app.route("/stories")
 @login_required
@@ -104,13 +104,13 @@ def profile_route():
 @login_required
 def view_story(story_id):
     story = {"title":"Title", "body":"stuff happened"}
-    return render_template("view_story.html", title = "View Story", story = story)
+    return render_template("view_story.html", story = story)
 
 @app.route("/edit/<int:story_id>")
 @login_required
 def edit_story(story_id):
     story = {"title":"Title", "body":"stuff happened"}
-    return render_template("edit_story.html", title = "Edit Story", story = story)
+    return render_template("edit_story.html", story = story)
 
 if __name__ == "__main__":
     app.debug = True
