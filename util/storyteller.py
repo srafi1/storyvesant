@@ -26,4 +26,7 @@ def get_story_list():
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
-    c.execute(cmd)
+    stories = c.execute(cmd)
+    storydict = {}
+    for story in stories:
+        storydict["title"] = story[0]

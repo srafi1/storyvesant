@@ -2,7 +2,7 @@
 
 from flask import Flask, session, render_template, request, redirect, url_for, flash
 from functools import wraps
-import os, sqlite3
+import os, sys, sqlite3
 import util.loggit as loggit
 import util.storyteller as bard
 
@@ -23,7 +23,9 @@ def landing():
     #print "login status code test: "+str(loggit.auth("admin","password"));
     #loggit.register("a","admin2")
     #bard.create_story("test","testing")
-    return render_template("index.html", title = "Welcome")
+	#loggit.change_pass("a",'a', 'a')
+	bard.get_story_list()
+	return render_template("index.html", title = "Welcome")
 
 @app.route("/login", methods = ["GET", "POST"])
 def login_route():
@@ -97,6 +99,18 @@ def list_stories_route():
 @login_required
 def profile_route():
     return render_template("profile.html")
+
+@app.route("/view/<int:story_id>")
+@login_required
+def view_story(story_id):
+    story = {"title":"Title", "body":"stuff happened"}
+    return render_template("view_story.html", title = "View Story", story = story)
+
+@app.route("/edit/<int:story_id>")
+@login_required
+def edit_story(story_id):
+    story = {"title":"Title", "body":"stuff happened"}
+    return render_template("edit_story.html", title = "Edit Story", story = story)
 
 if __name__ == "__main__":
     app.debug = True
