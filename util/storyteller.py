@@ -30,4 +30,3 @@ def get_story_list():
     storydict = {}
     for story in stories:
         storydict["title"] = story[0]
-    '''
