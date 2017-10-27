@@ -18,17 +18,14 @@ def makeTables():
     command= "CREATE TABLE stories(title TEXT, creator_id INTEGER, story_id INTEGER)"
     c.execute(command);
     
-    command = "INSERT INTO users VALUES('a', 'a', 2,'a')"
-    c.execute(command);
+    ##command = "INSERT INTO users VALUES('a', 'a', 'a')"
+    ##c.execute(command);
 
 
 def newUser(uname, pword):
     command = "SELECT COUNT(*) FROM users"
-    count = c.execute(command)
-    id = 0
-    for num in count:
-        id = num[0] - 1
-    command = "INSERT INTO users VALUES('" + uname + "','" + pword + "'," + str(id) + ",'NULL')"
+    count = c.execute(command)[0][0]
+    command = "INSERT INTO users VALUES(uname, pword," + str(count) + ",'NULL')"
     c.execute(command)
 
     

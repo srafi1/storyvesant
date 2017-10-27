@@ -100,6 +100,18 @@ def list_stories_route():
 def profile_route():
     return render_template("profile.html")
 
+@app.route("/view/<int:story_id>")
+@login_required
+def view_story(story_id):
+    story = {"title":"Title", "body":"stuff happened"}
+    return render_template("view_story.html", title = "View Story", story = story)
+
+@app.route("/edit/<int:story_id>")
+@login_required
+def edit_story(story_id):
+    story = {"title":"Title", "body":"stuff happened"}
+    return render_template("edit_story.html", title = "Edit Story", story = story)
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
