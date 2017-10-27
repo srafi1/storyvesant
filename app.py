@@ -2,7 +2,7 @@
 
 from flask import Flask, session, render_template, request, redirect, url_for, flash
 from functools import wraps
-import os, sqlite3
+import os, sys, sqlite3
 import util.loggit as loggit
 import util.storyteller as bard
 
@@ -23,7 +23,8 @@ def landing():
     #print "login status code test: "+str(loggit.auth("admin","password"));
     #loggit.register("a","admin2")
     #bard.create_story("test","testing")
-	loggit.change_pass("a",'a', 'a')
+	#loggit.change_pass("a",'a', 'a')
+	bard.get_story_list()
 	return render_template("index.html", title = "Welcome")
 
 @app.route("/login", methods = ["GET", "POST"])
