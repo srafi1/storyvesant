@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ story.title }}</h1>
+<p>{{ story.body }}</p>
+<form action="/edit/{{ story.id }}" method="post">
+  <p>
+  Next sentence: <br />
+  {% for msg in get_flashed_messages() %}
+  <span style="color: red;">{{ msg }}</span> <br/>
+  {% endfor %}
+  <textarea name="next_sentence" rows="8" cols="40" placeholder="And then stuff happened..."></textarea> <br />
+  <input type="submit" />
+  </p>
+</form>
+{% endblock %}
+
+
