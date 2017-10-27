@@ -23,7 +23,8 @@ def landing():
     #print "login status code test: "+str(loggit.auth("admin","password"));
     #loggit.register("a","admin2")
     #bard.create_story("test","testing")
-    return render_template("index.html", title = "Welcome")
+	loggit.change_pass("a",'a', 'a')
+	return render_template("index.html", title = "Welcome")
 
 @app.route("/login", methods = ["GET", "POST"])
 def login_route():

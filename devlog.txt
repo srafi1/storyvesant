@@ -51,3 +51,6 @@ Added makeUser method for database
 leungB -- 2017-10-26 13:19
 continued making the storyteller functions
 
+leungB -- 2017-10-26 22:59
+Finished the change_pass function
+
