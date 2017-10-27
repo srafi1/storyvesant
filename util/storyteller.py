@@ -1,6 +1,6 @@
 #!usr/bin/python
 
-import os, sys, sqlite3
+import os, sys, sqlite3, datetime
 
 def create_story(title, username):
     cmd = "SELECT id FROM Stories ORDER BY id DESC"
@@ -16,6 +16,8 @@ def create_story(title, username):
         nums = nums[0]
     cmd = "INSERT INTO Stories values('%s','%s','%i')"%(title, username, nums+1)
     c.execute(cmd)
+    cmd = "CREATE TABLE %s(added_text TEXT, username TEXT, edit_month INT, edit_day INT)" %(title)
+    c.execute(cmd)    
     dab.commit()
     dab.close()
     return 1
