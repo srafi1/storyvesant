@@ -24,7 +24,8 @@ def landing():
     #loggit.register("a","admin2")
     #bard.create_story("test","testing")
 	#loggit.change_pass("a",'a', 'a')
-	bard.get_last_sentence("test")
+	#bard.get_last_sentence("test")
+	#bard.add_to_story("test","BLAHBLAH2","BLEHBLEH2")
 	print bard.get_story_list()
 	return render_template("index.html")
 

@@ -31,12 +31,9 @@ def auth(usar,passwad):
         return 0
 
 def register(user, password):
-
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
-
-    c = make_cursor("upass.db")
     pPass = password
     cmd = "SELECT * FROM users WHERE username = '%s'" % (user)
     check = c.execute(cmd)

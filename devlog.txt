@@ -63,3 +63,6 @@ added title blocks
 leungB -- 2017-10-28 09:06
 Got the last_sentence and get_story_list functions working
 
+leungB -- 2017-10-28 09:26
+add_to_story is good too
+

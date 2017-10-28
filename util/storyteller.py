@@ -22,6 +22,27 @@ def create_story(title, username):
     dab.close()
     return 1
 
+def add_to_story(title,username,addedtext):
+    cmd = "SELECT edit_id FROM %s ORDER BY edit_id DESC"%(title)
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    c.execute(cmd)
+    nums = c.fetchone()
+    if (nums == None):
+        #print "0"
+        nums = 0
+    else:
+        nums = nums[0]
+    d = datetime.date.today()
+    mon = d.month
+    day = d.day
+    cmd = "INSERT INTO %s values('%s','%s',%i,%i,%i)"%(title,addedtext,username,mon,day,1+nums)
+    c.execute(cmd)
+    dab.commit()
+    dab.close()
+    return 1    
+
 #return list of dictionaries with .title and .last-sentences.
 def get_story_list():
     cmd = "SELECT * FROM Stories ORDER BY id DESC"
@@ -45,4 +66,6 @@ def get_last_sentence(story):
     c = dab.cursor()
     c.execute(cmd)
     sentence = c.fetchone()
+    if sentence == None:
+        return ""
     return str(sentence[0])
