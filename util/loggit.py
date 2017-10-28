@@ -15,13 +15,13 @@ def upass_get(usar):
     return nPass
 
 def auth(usar,passwad):
-    pUser = usar
-    pPass = hash(passwad)
     '''
     stat_code -1 = nothing in user input
     stat_code 0 = bad user or password
-    stat_code 1 = good
+    stat_code 1 = both user and password good
     '''
+    pUser = usar
+    pPass = hash(passwad)
     upassget = upass_get(usar)
     if (upass_get(usar) == ""):
         return -1
@@ -31,9 +31,12 @@ def auth(usar,passwad):
         return 0
 
 def register(user, password):
+
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
+
+    c = make_cursor("upass.db")
     pPass = password
     cmd = "SELECT * FROM users WHERE username = '%s'" % (user)
     check = c.execute(cmd)
@@ -69,7 +72,6 @@ def change_pass(username, oldpass, newpass):
 	if str(oldpassH)==str(good[1]):
 		print "Proceeding with password change."
 		cmd = "UPDATE users SET password = '%s' WHERE username = '%s'" % (str(hash(newpass)),username)
-		#print cmd
 		c.execute(cmd)
 		dab.commit()
 		return 1

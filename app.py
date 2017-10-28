@@ -24,7 +24,8 @@ def landing():
     #loggit.register("a","admin2")
     #bard.create_story("test","testing")
 	#loggit.change_pass("a",'a', 'a')
-	bard.get_story_list()
+	bard.get_last_sentence("test")
+	print bard.get_story_list()
 	return render_template("index.html")
 
 @app.route("/login", methods = ["GET", "POST"])
