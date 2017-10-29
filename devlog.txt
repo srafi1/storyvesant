@@ -75,3 +75,6 @@ The 'view last sentence of story' part is now working, made a new 'get title fro
 rafiS -- 2017-10-29 19:30
 finished contributing and viewing stories
 
+rafiS -- 2017-10-29 19:40
+robustified app.py if story_id does not exist
+

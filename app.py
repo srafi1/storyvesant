@@ -110,10 +110,10 @@ def view_story(story_id):
                 "body":bard.get_full_story(title).replace("\n", "<br/>"),
                 "id":story_id
                 }
+        if bard.user_edited_story(title, session["user"]):
+            return render_template("view_full_story.html", story = story)
     else:
         story = None
-    if bard.user_edited_story(title, session["user"]):
-        return render_template("view_full_story.html", story = story)
     return render_template("view_story.html", story = story)
 
 @app.route("/edit/<int:story_id>", methods = ["GET", "POST"])
@@ -134,6 +134,8 @@ def edit_story(story_id):
                 "last_sentence":bard.get_last_sentence(title),
                 "id":story_id
                 }
+        if bard.user_edited_story(title, session["user"]):
+            return redirect("/view/%d"%story_id)
     else:
         story = None
     return render_template("edit_story.html", story = story)

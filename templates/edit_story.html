@@ -5,6 +5,10 @@ Contribute
 {% endblock %}
 
 {% block content %}
+{% if story == None %} <h1>
+  That story does not exist
+</h1>
+{% else %}
 <h1>{{ story.title }}</h1>
 <p>{{ story.last_sentence }}</p>
 <form action="/edit/{{ story.id }}" method="post">
@@ -17,6 +21,7 @@ Contribute
   <input type="submit" />
   </p>
 </form>
+{% endif %}
 {% endblock %}
 
 
