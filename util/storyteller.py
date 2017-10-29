@@ -43,6 +43,17 @@ def add_to_story(title,username,addedtext):
     dab.close()
     return 1    
 
+def get_story_title(story_id):
+    cmd = "SELECT * FROM Stories WHERE id = %i"%(story_id)
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    story = c.execute(cmd)
+    storytitle = story.fetchone()
+
+    return str(storytitle[0])
+    
+
 #return list of dictionaries with .title and .last-sentences.
 def get_story_list():
     cmd = "SELECT * FROM Stories ORDER BY id DESC"
@@ -54,9 +65,22 @@ def get_story_list():
     storydict = {}
     for story in stories:
         storydict["title"] = str(story[0])
+        storydict["id"] = int(story[2])
         storydict["last_sentence"] = get_last_sentence(story[0])
         storyarr.append(storydict.copy())
     return storyarr
+
+def get_full_story(story_id):
+    story = get_story_title(story_id)
+    cmd = "SELECT added_text FROM '%s' ORDER BY edit_id ASC"%(story)
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    allwords = c.execute(cmd)
+    finalsay = ""
+    for sentence in allwords:
+        finalsay+=str(sentence[0])+"\n"
+    return finalsay
 
 #returns last sentence in a story
 def get_last_sentence(story):

@@ -66,3 +66,9 @@ Got the last_sentence and get_story_list functions working
 leungB -- 2017-10-28 09:26
 add_to_story is good too
 
+leungB -- 2017-10-29 17:19
+Got the create_story front end working
+
+leungB -- 2017-10-29 18:14
+The 'view last sentence of story' part is now working, made a new 'get title from story id' function
+

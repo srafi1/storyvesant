@@ -26,8 +26,10 @@ def landing():
 	#loggit.change_pass("a",'a', 'a')
 	#bard.get_last_sentence("test")
 	#bard.add_to_story("test","BLAHBLAH2","BLEHBLEH2")
-	print bard.get_story_list()
-	return render_template("index.html")
+    print bard.get_story_title(2)
+    #print bard.get_story_list()
+    print bard.get_full_story(2)
+    return render_template("index.html")
 
 @app.route("/login", methods = ["GET", "POST"])
 def login_route():
@@ -99,7 +101,8 @@ def create_story():
 @app.route("/stories")
 @login_required
 def list_stories_route():
-    return render_template("list_stories.html")
+    storylist = bard.get_story_list()
+    return render_template("list_stories.html",stories = storylist)
 
 @app.route("/profile")
 @login_required
@@ -109,13 +112,21 @@ def profile_route():
 @app.route("/view/<int:story_id>")
 @login_required
 def view_story(story_id):
-    story = {"title":"Title", "body":"stuff happened"}
+    title = bard.get_story_title(story_id)    
+    story = {"title":title, "body":bard.get_last_sentence(title)}
     return render_template("view_story.html", story = story)
+
+@login_required
+def view_fin_story(story_id):
+    fullthing = get_full_story(story_id)
+    story = {"title":bard.get_story_title(story_id),"body":fullthing}
+    return render_template("view_story.html",story = story)
 
 @app.route("/edit/<int:story_id>")
 @login_required
 def edit_story(story_id):
-    story = {"title":"Title", "body":"stuff happened"}
+    title = get_story_title(story_id)
+    story = {"title":title, "body":bard.get_last_sentence(title)}
     return render_template("edit_story.html", story = story)
 
 if __name__ == "__main__":
