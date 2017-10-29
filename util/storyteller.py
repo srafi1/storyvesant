@@ -16,14 +16,14 @@ def create_story(title, username):
         nums = nums[0]
     cmd = "INSERT INTO Stories values('%s','%s','%i')"%(title, username, nums+1)
     c.execute(cmd)
-    cmd = "CREATE TABLE %s(added_text TEXT, username TEXT, edit_month INT, edit_day INT, edit_ID INT)" %(title)
+    cmd = "CREATE TABLE '%s'(added_text TEXT, username TEXT, edit_month INT, edit_day INT, edit_ID INT)" %(title)
     c.execute(cmd)
     dab.commit()
     dab.close()
     return 1
 
 def add_to_story(title,username,addedtext):
-    cmd = "SELECT edit_id FROM %s ORDER BY edit_id DESC"%(title)
+    cmd = "SELECT edit_id FROM '%s' ORDER BY edit_id DESC"%(title)
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
@@ -37,7 +37,7 @@ def add_to_story(title,username,addedtext):
     d = datetime.date.today()
     mon = d.month
     day = d.day
-    cmd = "INSERT INTO %s values('%s','%s',%i,%i,%i)"%(title,addedtext,username,mon,day,1+nums)
+    cmd = "INSERT INTO '%s' values('%s','%s',%i,%i,%i)"%(title,addedtext,username,mon,day,1+nums)
     c.execute(cmd)
     dab.commit()
     dab.close()
@@ -60,7 +60,7 @@ def get_story_list():
 
 #returns last sentence in a story
 def get_last_sentence(story):
-    cmd = "SELECT added_text FROM %s ORDER BY edit_id DESC"%(story)
+    cmd = "SELECT added_text FROM '%s' ORDER BY edit_id DESC"%(story)
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()

@@ -8,7 +8,7 @@ def upass_get(usar):
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     cmd = "SELECT password FROM users WHERE username = '%s'" % (usar)
-    Pass =    c.execute(cmd)
+    Pass = c.execute(cmd)
     nPass = ""
     for row in Pass:
         nPass = str(row[0])

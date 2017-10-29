@@ -89,6 +89,10 @@ def create_story():
             valid = False
         if valid:
             # add story to db
+            print title
+            print body
+            bard.create_story(title,session["user"])
+            bard.add_to_story(title,session["user"],body)
             return redirect("/")
     return render_template("create_story.html")
 
