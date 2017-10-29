@@ -10,7 +10,8 @@ All Stories
 <h3>{{ story.title }}</h3>
 <p>
 {{ story.last_sentence }} <br/>
-<a href="/read/{{ story.id }}">Go to this story</a>
+<a href="/view/{{ story.id }}">Go to this story</a>
+<a href="/viewfull/{{ story.id }}">SPOILERS: View full story</a>
 </p>
 {% endfor %}
 {% endblock %}
