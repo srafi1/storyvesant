@@ -6,4 +6,41 @@ Profile
 
 {% block content %}
 <h1>{{ session["user"] }}</h1>
+{% for msg in get_flashed_messages() %}
+<span style="color: red;">{{ msg }}</span> <br/>
+{% endfor %}
+<form action="/profile" method="post">
+  <table>
+    <tr>
+      <td>
+        Current Password:
+      </td>
+      <td>
+        <input type="password" name="old_pword" placeholder="Current Password" autofocus="true"/> <br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        New Password:
+      </td> 
+      <td>
+        <input type="password" name="pword" placeholder="New Password" /> <br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Confirm Password:
+      </td> 
+      <td>
+        <input type="password" name="pword2" placeholder="Confirm Password" /> <br/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="Change password" />
+      </td>
+    </tr>
+  </table>
+</form>
 {% endblock %}

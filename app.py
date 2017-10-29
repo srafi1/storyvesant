@@ -95,9 +95,27 @@ def list_stories_route():
     storylist = bard.get_story_list()
     return render_template("list_stories.html",stories = storylist)
 
-@app.route("/profile")
+@app.route("/profile", methods = ["GET", "POST"])
 @login_required
 def profile_route():
+    if request.method == "POST":
+        old_pword = request.form.get("old_pword") 
+        pword = request.form.get("pword") 
+        pword2 = request.form.get("pword2") 
+        valid = True
+        if old_pword == None or old_pword == "":
+            flash("Enter your current password")
+            valid = False
+        if pword == None or pword == "":
+            flash("Enter a new password")
+            valid = False
+        if pword != pword2:
+            flash("Passwords do not match")
+            valid = False
+        if valid:
+            if loggit.change_pass(session["user"], old_pword, pword):
+                return redirect("/")
+            flash("Incorrect current password")
     return render_template("profile.html")
 
 @app.route("/view/<int:story_id>")

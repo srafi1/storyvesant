@@ -78,3 +78,6 @@ finished contributing and viewing stories
 rafiS -- 2017-10-29 19:40
 robustified app.py if story_id does not exist
 
+rafiS -- 2017-10-29 19:53
+added changing password
+

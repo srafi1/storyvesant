@@ -49,7 +49,7 @@ def register(user, password):
     print user+" added."
     dab.commit()
     return 1
-	
+    
 def check_for_user(user):
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
@@ -59,20 +59,20 @@ def check_for_user(user):
     return len(c.fetchall()) != 0
 
 def change_pass(username, oldpass, newpass):
-	db_name = "data/upass.db"
-	dab = sqlite3.connect(db_name)
-	c = dab.cursor()
-	cmd = "SELECT * FROM users WHERE username = '%s'" % username
-	c.execute(cmd)
-	good = c.fetchone()
-	oldpassH = hash(oldpass)
-	if str(oldpassH)==str(good[1]):
-		print "Proceeding with password change."
-		cmd = "UPDATE users SET password = '%s' WHERE username = '%s'" % (str(hash(newpass)),username)
-		c.execute(cmd)
-		dab.commit()
-		return 1
-	else:
-		print "Stopped, password is bad."
-		return 0
-		
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    cmd = "SELECT * FROM users WHERE username = '%s'" % username
+    c.execute(cmd)
+    good = c.fetchone()
+    oldpassH = hash(oldpass)
+    if str(oldpassH)==str(good[1]):
+    	print "Proceeding with password change."
+    	cmd = "UPDATE users SET password = '%s' WHERE username = '%s'" % (str(hash(newpass)),username)
+    	c.execute(cmd)
+    	dab.commit()
+    	return 1
+    else:
+    	print "Stopped, password is bad."
+    	return 0
+    	
