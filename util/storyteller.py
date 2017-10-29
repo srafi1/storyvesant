@@ -50,9 +50,9 @@ def get_story_title(story_id):
     c = dab.cursor()
     story = c.execute(cmd)
     storytitle = story.fetchone()
-
+    if storytitle == None:
+        return None
     return str(storytitle[0])
-    
 
 #return list of dictionaries with .title and .last-sentences.
 def get_story_list():
@@ -70,9 +70,19 @@ def get_story_list():
         storyarr.append(storydict.copy())
     return storyarr
 
-def get_full_story(story_id):
-    story = get_story_title(story_id)
-    cmd = "SELECT added_text FROM '%s' ORDER BY edit_id ASC"%(story)
+def check_story_exists(title):
+    cmd = "SELECT * FROM Stories WHERE title = '%s'" % title
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    c.execute(cmd)
+    story = c.fetchone()
+    if story == None:
+        return False
+    return True
+
+def get_full_story(title):
+    cmd = "SELECT added_text FROM '%s' ORDER BY edit_id ASC"%(title)
     db_name = "data/upass.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
@@ -81,6 +91,16 @@ def get_full_story(story_id):
     for sentence in allwords:
         finalsay+=str(sentence[0])+"\n"
     return finalsay
+
+def user_edited_story(title, user):
+    cmd = "SELECT * FROM '%s' WHERE username = '%s'" % (title, user)
+    db_name = "data/upass.db"
+    dab = sqlite3.connect(db_name)
+    c = dab.cursor()
+    c.execute(cmd)
+    if c.fetchone():
+        return True
+    return False
 
 #returns last sentence in a story
 def get_last_sentence(story):

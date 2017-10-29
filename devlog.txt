@@ -72,3 +72,6 @@ Got the create_story front end working
 leungB -- 2017-10-29 18:14
 The 'view last sentence of story' part is now working, made a new 'get title from story id' function
 
+rafiS -- 2017-10-29 19:30
+finished contributing and viewing stories
+

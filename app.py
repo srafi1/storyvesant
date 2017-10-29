@@ -20,15 +20,6 @@ def login_required(func):
 
 @app.route("/")
 def landing():
-    #print "login status code test: "+str(loggit.auth("admin","password"));
-    #loggit.register("a","admin2")
-    #bard.create_story("test","testing")
-	#loggit.change_pass("a",'a', 'a')
-	#bard.get_last_sentence("test")
-	#bard.add_to_story("test","BLAHBLAH2","BLEHBLEH2")
-    print bard.get_story_title(2)
-    #print bard.get_story_list()
-    print bard.get_full_story(2)
     return render_template("index.html")
 
 @app.route("/login", methods = ["GET", "POST"])
@@ -89,10 +80,10 @@ def create_story():
         if body == "":
             flash("Please enter a body")
             valid = False
+        if bard.check_story_exists(title):
+            flash("That story already exists")
+            valid = False
         if valid:
-            # add story to db
-            print title
-            print body
             bard.create_story(title,session["user"])
             bard.add_to_story(title,session["user"],body)
             return redirect("/")
@@ -113,20 +104,38 @@ def profile_route():
 @login_required
 def view_story(story_id):
     title = bard.get_story_title(story_id)    
-    story = {"title":title, "body":bard.get_last_sentence(title)}
+    if title:
+        story = {"title":title, 
+                "last_sentence":bard.get_last_sentence(title),
+                "body":bard.get_full_story(title).replace("\n", "<br/>"),
+                "id":story_id
+                }
+    else:
+        story = None
+    if bard.user_edited_story(title, session["user"]):
+        return render_template("view_full_story.html", story = story)
     return render_template("view_story.html", story = story)
 
-@login_required
-def view_fin_story(story_id):
-    fullthing = get_full_story(story_id)
-    story = {"title":bard.get_story_title(story_id),"body":fullthing}
-    return render_template("view_story.html",story = story)
-
-@app.route("/edit/<int:story_id>")
+@app.route("/edit/<int:story_id>", methods = ["GET", "POST"])
 @login_required
 def edit_story(story_id):
-    title = get_story_title(story_id)
-    story = {"title":title, "body":bard.get_last_sentence(title)}
+    title = bard.get_story_title(story_id)
+    if request.method == "POST":
+        valid = True
+        next_sentence = request.form.get("next_sentence")
+        if next_sentence == None or next_sentence == "":
+            flash("Please enter the next sentence")
+            valid = False
+        if valid:
+            bard.add_to_story(title, session["user"], next_sentence)
+            return redirect("/view/%d"%story_id)
+    if title:
+        story = {"title":title, 
+                "last_sentence":bard.get_last_sentence(title),
+                "id":story_id
+                }
+    else:
+        story = None
     return render_template("edit_story.html", story = story)
 
 if __name__ == "__main__":

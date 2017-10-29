@@ -11,8 +11,8 @@ View Story
 </h1>
 {% else %}
 <h1>{{ story.title }}</h1>
-<p>{{ story.last_sentence }}</p>
-<a href="/edit/{{ story.id }}">Contribute to this story</a>
+<p>{{ story.body|safe }}</p>
 {% endif %}
 {% endblock %}
+
 
