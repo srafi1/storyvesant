@@ -24,7 +24,7 @@ def login_required(func):
 def landing():
     if "user" in session:
         stories = bard.get_story_list()
-        for story in stories:
+        for story in stories[::-1]:
             if not bard.user_edited_story(story["title"], session["user"]):
                 stories.remove(story)
         return render_template("view_feed.html", stories = stories)
