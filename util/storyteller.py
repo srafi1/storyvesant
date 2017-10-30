@@ -4,7 +4,7 @@ import os, sys, sqlite3, datetime
 
 def create_story(title, username):
     cmd = "SELECT id FROM Stories ORDER BY id DESC"
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     c.execute(cmd)
@@ -24,7 +24,7 @@ def create_story(title, username):
 
 def add_to_story(title,username,addedtext):
     cmd = "SELECT edit_id FROM '%s' ORDER BY edit_id DESC"%(title)
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     c.execute(cmd)
@@ -45,7 +45,7 @@ def add_to_story(title,username,addedtext):
 
 def get_story_title(story_id):
     cmd = "SELECT * FROM Stories WHERE id = %i"%(story_id)
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     story = c.execute(cmd)
@@ -57,7 +57,7 @@ def get_story_title(story_id):
 #return list of dictionaries with .title and .last-sentences.
 def get_story_list():
     cmd = "SELECT * FROM Stories ORDER BY id DESC"
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     stories = c.execute(cmd)
@@ -72,7 +72,7 @@ def get_story_list():
 
 def check_story_exists(title):
     cmd = "SELECT * FROM Stories WHERE title = '%s'" % title
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     c.execute(cmd)
@@ -83,7 +83,7 @@ def check_story_exists(title):
 
 def get_full_story(title):
     cmd = "SELECT added_text FROM '%s' ORDER BY edit_id ASC"%(title)
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     allwords = c.execute(cmd)
@@ -94,7 +94,7 @@ def get_full_story(title):
 
 def user_edited_story(title, user):
     cmd = "SELECT * FROM '%s' WHERE username = '%s'" % (title, user)
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     c.execute(cmd)
@@ -105,7 +105,7 @@ def user_edited_story(title, user):
 #returns last sentence in a story
 def get_last_sentence(story):
     cmd = "SELECT added_text FROM '%s' ORDER BY edit_id DESC"%(story)
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     c.execute(cmd)

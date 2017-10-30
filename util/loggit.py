@@ -4,7 +4,7 @@ import os, sys, sqlite3
 
 
 def upass_get(usar):
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     cmd = "SELECT password FROM users WHERE username = '%s'" % (usar)
@@ -31,7 +31,7 @@ def auth(usar,passwad):
         return 0
 
 def register(user, password):
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     pPass = password
@@ -49,9 +49,9 @@ def register(user, password):
     print user+" added."
     dab.commit()
     return 1
-    
+
 def check_for_user(user):
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     cmd = "SELECT * FROM users WHERE username = '%s'" % user
@@ -59,7 +59,7 @@ def check_for_user(user):
     return len(c.fetchall()) != 0
 
 def change_pass(username, oldpass, newpass):
-    db_name = "data/upass.db"
+    db_name = "data/storyvesant.db"
     dab = sqlite3.connect(db_name)
     c = dab.cursor()
     cmd = "SELECT * FROM users WHERE username = '%s'" % username

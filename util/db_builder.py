@@ -2,20 +2,19 @@ import sqlite3   #enable control of an sqlite database
 import csv       #facilitates CSV I/O
 import os #Used for os.remove()
 
-f="storyvesant.db"
-os.remove(f) #Used During Testing to remove file at the beginning
+f="data/storyvesant.db"
+# os.remove(f) #Used During Testing to remove file at the beginning
 
-
-def makeTables():
+def make_tables():
+    f = "data/storyvesant.db"
     db = sqlite3.connect(f) #open if f exists, otherwise create
     c = db.cursor()    #facilitate db ops
-
-    command= "CREATE TABLE users(username TEXT, password TEXT, user_id INTEGER, story_edits TEXT)"
+    command= "CREATE TABLE users(username TEXT, password TEXT)"
     c.execute(command)
     
     #Individual stories should have an ID number
     #Users should be referred to by their ID numbers
-    command= "CREATE TABLE stories(title TEXT, creator_id INTEGER, story_id INTEGER)"
+    command= "CREATE TABLE stories(title TEXT, creator TEXT, id INTEGER)"
     c.execute(command)
     
     ##command = "INSERT INTO users VALUES('a', 'a', 'a')"
@@ -27,8 +26,7 @@ def new_story(title,uID):
     db = sqlite3.connect(f) #open if f exists, otherwise create
     c = db.cursor()    #facilitate db ops
 
-    command="INSERT INTO stories("+title+","+uID+","+\ #find last number add one
-      "1)"
+    command="INSERT INTO stories("+title+","+uID+","+"1)"
     c.execute(command)
         
     db.commit() #save changes
@@ -56,13 +54,4 @@ def newUser(uname, pword):
 
     db.commit() #save changes
     db.close()  #close database
-
-    
-makeTables();
-
-db = sqlite3.connect(f) #open if f exists, otherwise create
-c = db.cursor()    #facilitate db ops
-
-newUser("ibnul", "jahan")
-newUser("name", "pass")
 

@@ -5,6 +5,7 @@ from functools import wraps
 import os, sys, sqlite3
 import util.loggit as loggit
 import util.storyteller as bard
+import util.db_builder as db
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -159,5 +160,7 @@ def edit_story(story_id):
     return render_template("edit_story.html", story = story)
 
 if __name__ == "__main__":
+    if not os.path.exists("data/storyvesant.db"):
+        db.make_tables()
     app.debug = True
     app.run()
