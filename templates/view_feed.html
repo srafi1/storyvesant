@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Feed
+{% endblock %}
+
+{% block content %}
+<h1>Your Feed</h1>
+{% for story in stories %}
+<h3>{{ story.title }}</h3>
+<p>
+{{ story.last_sentence }} <br/>
+<a href="/view/{{ story.id }}">View full story</a>
+</p>
+<br/>
+{% endfor %}
+{% endblock %}
+

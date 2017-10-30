@@ -10,6 +10,7 @@ import util.db_builder as db
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
+# add this decorator if you need to login for a route
 def login_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -21,6 +22,12 @@ def login_required(func):
 
 @app.route("/")
 def landing():
+    if "user" in session:
+        stories = bard.get_story_list()
+        for story in stories:
+            if not bard.user_edited_story(story["title"], session["user"]):
+                stories.remove(story)
+        return render_template("view_feed.html", stories = stories)
     return render_template("index.html")
 
 @app.route("/login", methods = ["GET", "POST"])
