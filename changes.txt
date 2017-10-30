@@ -1,0 +1,17 @@
+_________   ___ ___    _____    _______    ___________________ _________
+\_   ___ \ /   |   \  /  _  \   \      \  /  _____/\_   _____//   _____/
+/    \  \//    ~    \/  /_\  \  /   |   \/   \  ___ |    __)_ \_____  \ 
+\     \___\    Y    /    |    \/    |    \    \_\  \|        \/        \
+ \______  /\___|_  /\____|__  /\____|__  /\______  /_______  /_______  /
+        \/       \/         \/         \/        \/        \/        \/ 
+
+Team storyvesant
+Ibnul Jahan, Shakil Rafi, Holden Higgins, Brian Leung
+
+Very minor changes were actually made from our initial design on how the project would run.
+
+1. The user table in our database no longer stores which edits were made by a certain user. We decided this wasn't an integral aspect of the site and deprioritized it. A possible expansion for the project would be to add a list of all edits made to the user's profile page. User edits for individual stories are saved however.
+
+2. Initially we didn't envision how the user would view the story before versus after they made an edit. In this final version we allow the user only to see the last edit made before, while allowing them to see the whole story afterward.
+
+Apart from these two, no real differences occurred from our initial design to this implementation of our project.
